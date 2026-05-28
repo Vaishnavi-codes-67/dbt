@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Web Traffic Analyzer</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body onload="initDashboard()">
+
+    <div class="dashboard-container">
+        <div class="sidebar">
+            <div style="margin-bottom: 2rem; font-size: 1.2rem; font-weight: bold;">TrafficAnalyzr</div>
+            <a href="#" class="active">Overview</a>
+            <a href="#">Real-Time</a>
+            <a href="#">Geography</a>
+            <a href="#">Behavior</a>
+            <a href="#" onclick="logout()" style="margin-top: 2rem; color: #ef4444;">Logout</a>
+        </div>
+
+        <div class="main-content">
+            <header style="display: flex; justify-content: space-between; margin-bottom: 2rem;">
+                <h2>Dashboard</h2>
+                <div>Welcome, <span id="user-email">User</span></div>
+            </header>
+
+            <div class="stats-grid">
+                <div class="card">
+                    <h3>Real-Time Visitors</h3>
+                    <div class="number" id="realtime-count">0</div>
+                    <div style="color: #10b981; font-size: 0.8rem;">● Live</div>
+                </div>
+                <div class="card">
+                    <h3>Total Page Views</h3>
+                    <div class="number">128,402</div>
+                </div>
+                <div class="card">
+                    <h3>Unique Visitors</h3>
+                    <div class="number">45,200</div>
+                </div>
+                <div class="card">
+                    <h3>Avg. Session</h3>
+                    <div class="number">2m 45s</div>
+                </div>
+            </div>
+
+            <div class="charts-grid">
+                <div class="chart-container" style="grid-column: span 2;">
+                    <h3>Traffic History (Weekly)</h3>
+                    <canvas id="trafficChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3>Browser Share</h3>
+                    <canvas id="browserChart"></canvas>
+                </div>
+            </div>
+
+            <div class="charts-grid">
+                <div class="chart-container">
+                    <h3>Operating Systems</h3>
+                    <canvas id="osChart"></canvas>
+                </div>
+                <div class="card">
+                    <h3>Top Locations</h3>
+                    <table>
+                        <tr><th>Country</th><th>Users</th></tr>
+                        <tr><td>🇺🇸 United States</td><td>12,000</td></tr>
+                        <tr><td>🇮🇳 India</td><td>8,500</td></tr>
+                        <tr><td>🇬🇧 United Kingdom</td><td>4,200</td></tr>
+                        <tr><td>🇩🇪 Germany</td><td>3,100</td></tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Your Tracking Code</h3>
+                <p style="margin-bottom: 1rem; color: #64748b;">Copy and paste this code into the <code>&lt;head&gt;</code> of your website.</p>
+                <div class="snippet-box">
+                    <button class="copy-btn" onclick="copySnippet()">Copy</button>
+                    <code id="tracking-code">
+&lt;script&gt;
+  (function(w,d,s,id){
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {return;}
+    js = d.createElement(s); js.id = id;
+    js.src = "https://trafficanalyzer.com/tracker.js?id=USER_ID";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(window, document, 'script', 'traffic-sdk'));
+&lt;/script&gt;
+                    </code>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
