@@ -1,5 +1,6 @@
 # DBT PROJECT
-A development project built for handling database operations and applications logic
+A development project built for direct beneificiary transfer for transparency
+
 
 # tech usedd 
 java |SQL | HTML | CSS 
